@@ -13,11 +13,28 @@ class OzonDarkThemeColors {
 
 }
 
+class LiteColors{
+  static const Color surface = Color(0xffdceeff);
+  static const Color surfaceContainer = Color(0xffffffff);
+  static const Color surfaceContainerHigh = Color(0xffeaf4ff);
+
+  static const Color primary = Color(0xff2F6FED);
+  static const Color secondary = Color(0xff7FA6F7);
+
+  static const Color outline = Color(0xff000000);
+  static const Color outlineVariant = Color(0xff595959);
+}
+
 class LiteGreenColors {
-  static const Color surface = Color(0xffF6F0D7);
-  static const Color primary = Color(0xffC5D89D);
-  static const Color secondary = Color(0xff9CAB84);
-  static const Color outline = Color(0xff89986D);
+  static const Color surface = Color(0xffFBF7E9);
+  static const Color surfaceContainer = Color(0xffF6F0D7);
+  static const Color surfaceContainerHigh = Color(0xffC5D89D);
+
+  static const Color primary = Color(0xff708C33);
+  static const Color secondary = Color(0xff97A281);
+
+  static const Color outline = Color(0xff4D6323);
+  static const Color outlineVariant = Color(0xff6A725A);
 }
 
 class DarkGreenColors {

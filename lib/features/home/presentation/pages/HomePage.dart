@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resume/features/home/presentation/widgets/HeaderWidget.dart';
 import 'package:resume/styles/sizes.dart';
 
 import '../widgets/MyInfoWidget.dart';
@@ -16,41 +17,51 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SizedBox(
-        width: AppSizes.mainCardWight,
-        child: Row(
-          children: [
-            Container(
-              width: AppSizes.mainCardWight / 3,
-              height: 100,
+    ColorScheme theme = Theme.of(context).colorScheme;
+
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(height: 50),
+          Center(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 32, vertical: 32),
+              width: AppSizes.mainCardWight,
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.surfaceContainerHigh,
+                color: theme.surfaceContainer,
                 borderRadius: BorderRadius.horizontal(
                   left: Radius.circular(AppSizes.mainCardBorderRadius),
                 ),
               ),
-              child: MyInfoWidget(),
-            ),
-            Container(
-              height: 100,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.surfaceContainer,
-                border: Border(
-                  left: BorderSide(
-                    color: Theme.of(context).colorScheme.outlineVariant,
-                    width: 2.0, // Толщина только снизу
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  HeaderWidget(),
+                  SizedBox(height: 10),
+                  Container(height: 2, color: theme.outlineVariant),
+                  SizedBox(height: 20),
+                  IntrinsicHeight(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: (AppSizes.mainCardWight - 66) / 3 * 2,
+                          child: WorkInfoWidget(),
+                        ),
+                        Container(width: 2, color: theme.outlineVariant),
+                        SizedBox(
+                          width: (AppSizes.mainCardWight - 66) / 3,
+                          child: MyInfoWidget(),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                borderRadius: BorderRadius.horizontal(
-                  right: Radius.circular(AppSizes.mainCardBorderRadius),
-                ),
+                ],
               ),
-              width: AppSizes.mainCardWight / 3 * 2,
-              child: WorkInfoWidget(),
             ),
-          ],
-        ),
+          ),
+          SizedBox(height: 100),
+        ],
       ),
     );
   }
