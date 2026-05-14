@@ -7,7 +7,9 @@ class ChapterWidget extends StatelessWidget {
   final String header;
   final Widget content;
 
-  const ChapterWidget({super.key, required this.header, required this.content});
+  final double horizontalPadding;
+
+  const ChapterWidget({super.key, required this.header, required this.content, this.horizontalPadding = 8});
 
   @override
   Widget build(BuildContext context) {
@@ -34,16 +36,13 @@ class ChapterWidget extends StatelessWidget {
             ),
             Expanded(
               flex: 90,
-              child: Container(
-                height: 2,
-                color: theme.surfaceContainerHigh,
-              ),
+              child: Container(height: 2, color: theme.surfaceContainerHigh),
             ),
           ],
         ),
 
         SizedBox(height: 8),
-        content,
+        Padding(padding: EdgeInsets.symmetric(horizontal: horizontalPadding), child: content),
       ],
     );
   }

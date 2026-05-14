@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class AppSizes {
-  static const double mainCardWight = 900;
+  static const double mainCardWight = 800;
   static const double mainCardBorderRadius = 4;
 
   // PADDINGS

@@ -33,28 +33,28 @@ class MyInfoWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           ChapterWidget(
+            horizontalPadding: 4,
             header: "КОНТАКТЫ",
-            content: Padding(
-              padding: EdgeInsets.only(left: 4),
-              child: Column(
-                children:
-                    contacts
-                        .map(
-                          (contact) => ContactsRow(
-                            icon: contact.$1,
-                            text: contact.$2,
-                            url: contact.$3,
-                          ),
-                        )
-                        .toList(),
-              ),
+            content: Column(
+              children:
+                  contacts
+                      .map(
+                        (contact) => ContactsRow(
+                          icon: contact.$1,
+                          text: contact.$2,
+                          url: contact.$3,
+                        ),
+                      )
+                      .toList(),
             ),
           ),
+
           SizedBox(height: AppSizes.intragroupPadding),
           ChapterWidget(
+            horizontalPadding: 4,
             header: "КЛЮЧЕВЫЕ НАВЫКИ",
             content: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8),
+              padding: EdgeInsets.symmetric(horizontal: 0),
               child: Wrap(
                 spacing: 4,
                 runSpacing: 8,
@@ -64,7 +64,11 @@ class MyInfoWidget extends StatelessWidget {
             ),
           ),
           SizedBox(height: AppSizes.intragroupPadding),
-          ChapterWidget(header: "ЯЗЫКИ", content: Icon(Symbols.language)),
+          ChapterWidget(
+            horizontalPadding: 4,
+            header: "ЯЗЫКИ",
+            content: Icon(Symbols.language),
+          ),
         ],
       ),
     );
