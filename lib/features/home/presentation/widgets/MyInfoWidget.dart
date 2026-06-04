@@ -4,6 +4,8 @@ import 'package:resume/features/home/presentation/widgets/%D0%A1hapterWidget.dar
 import 'package:resume/styles/sizes.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'SkillWidget.dart';
+
 class MyInfoWidget extends StatelessWidget {
   static const List<String> skills = [
     "Python",
@@ -53,14 +55,18 @@ class MyInfoWidget extends StatelessWidget {
           ChapterWidget(
             horizontalPadding: 4,
             header: "КЛЮЧЕВЫЕ НАВЫКИ",
-            content: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 0),
-              child: Wrap(
-                spacing: 4,
-                runSpacing: 8,
-                children:
-                    skills.map((text) => SkillContainer(text: text)).toList(),
-              ),
+            content: Column(
+              children: [
+                SkillWidget(
+                  skillName: "Python",
+                  additionalSkills: ["PyQT", "Selenium", "FastAPI"],
+                ),
+                SizedBox(height: 4,),
+                SkillWidget(
+                  skillName: "Flutter",
+                  additionalSkills: ["flutter_markdown_plus", "url_launcher", "material_symbols_icons"],
+                ),
+              ],
             ),
           ),
           SizedBox(height: AppSizes.intragroupPadding),
