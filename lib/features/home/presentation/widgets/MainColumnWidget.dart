@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
+import '../../../../core/date_format.dart';
 import '../../../../styles/sizes.dart';
 import '../../data/resume_data.dart';
 import 'CourseWidget.dart';
@@ -25,7 +26,12 @@ class MainColumnWidget extends StatelessWidget {
           content: TimeLineWidget(
             items:
                 ResumeData.works
-                    .map((w) => WorkExperienceWidget(entity: w))
+                    .map(
+                      (w) => TimelineItem(
+                        period: PeriodFormat.monthPeriod(w.startDate, w.endDate),
+                        child: WorkExperienceWidget(entity: w),
+                      ),
+                    )
                     .toList(),
           ),
         ),
@@ -36,7 +42,12 @@ class MainColumnWidget extends StatelessWidget {
           content: TimeLineWidget(
             items:
                 ResumeData.study
-                    .map((s) => StudyInfoWidget(entity: s))
+                    .map(
+                      (s) => TimelineItem(
+                        period: PeriodFormat.yearPeriod(s.startDate, s.endDate),
+                        child: StudyInfoWidget(entity: s),
+                      ),
+                    )
                     .toList(),
           ),
         ),

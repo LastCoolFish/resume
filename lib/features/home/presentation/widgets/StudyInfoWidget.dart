@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../styles/sizes.dart';
 import '../../domain/models/StudyEntity.dart';
 
+/// Содержимое записи об образовании. Период выводит таймлайн.
 class StudyInfoWidget extends StatelessWidget {
   final StudyEntity entity;
 
@@ -11,52 +11,36 @@ class StudyInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ColorScheme colorScheme = Theme.of(context).colorScheme;
-    DateFormat format = DateFormat("yyyy", "ru");
+    final colorScheme = Theme.of(context).colorScheme;
 
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Text(
-                entity.universityName,
-                // style: TextStyle(
-                //   fontSize: AppSizes.accentTextSize,
-                //   color: colorScheme.outlineVariant,
-                // ),
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                  color: colorScheme.outline,
-                ),
-              ),
-              Spacer(),
-              Text(
-                "${format.format(entity.startDate)} — ${entity.endDate != null ? format.format(entity.endDate!) : 'н. в.'}",
-                style: TextStyle(
-                  fontSize: AppSizes.baseTextSize,
-                  fontWeight: FontWeight.w600,
-                  color: colorScheme.primary,
-                ),
-              ),
-            ],
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          entity.universityName,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+            color: colorScheme.outline,
           ),
-          SizedBox(height: 4),
-          Text(
-            "${entity.specialization} - ${entity.degree}",
-            style: TextStyle(
-              fontSize: AppSizes.accentTextSize,
-              color: colorScheme.onSurfaceVariant,
-            ),
+        ),
+        const SizedBox(height: 2),
+        Text(
+          "${entity.degree}: ${entity.fieldName}",
+          style: TextStyle(
+            fontSize: AppSizes.accentTextSize,
+            color: colorScheme.outline,
           ),
-
-          SizedBox(height: 8),
-        ],
-      ),
+        ),
+        Text(
+          entity.specialization,
+          style: TextStyle(
+            fontSize: AppSizes.accentTextSize,
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
+      ],
     );
   }
 }
