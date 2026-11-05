@@ -1,74 +1,69 @@
 import 'package:flutter/material.dart';
-import 'package:resume/features/home/presentation/widgets/HeaderWidget.dart';
 import 'package:resume/styles/sizes.dart';
 
-import '../widgets/MyInfoWidget.dart';
-import '../widgets/WorkInfoWidget.dart';
+import '../widgets/MainColumnWidget.dart';
+import '../widgets/SidebarWidget.dart';
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
   Widget build(BuildContext context) {
-    ColorScheme theme = Theme.of(context).colorScheme;
+    final scheme = Theme.of(context).colorScheme;
+    final radius = BorderRadius.circular(AppSizes.mainCardBorderRadius);
 
     return SingleChildScrollView(
-      child: Column(
-        children: [
-          SizedBox(height: 50),
-          Center(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 32, vertical: 32),
-              width: AppSizes.mainCardWight,
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: AppSizes.sheetMaxWidth),
+            child: DecoratedBox(
               decoration: BoxDecoration(
-                color: theme.surfaceContainer,
-                borderRadius: BorderRadius.circular(
-                  AppSizes.mainCardBorderRadius,
-                ),
+                color: scheme.surfaceContainer,
+                borderRadius: radius,
                 boxShadow: [
                   BoxShadow(
-                    color: theme.shadow,
+                    color: scheme.shadow,
                     blurRadius: 12,
                     offset: const Offset(0, 2),
                   ),
                 ],
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  HeaderWidget(),
-                  SizedBox(height: 10),
-                  Container(height: 1, color: theme.outlineVariant),
-                  SizedBox(height: 20),
-                  IntrinsicHeight(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: (AppSizes.mainCardWight - 66) / 3 * 2,
-                          child: WorkInfoWidget(),
+              child: ClipRRect(
+                borderRadius: radius,
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    final wide =
+                        constraints.maxWidth >= AppSizes.twoColumnBreakpoint;
+
+                    if (wide) {
+                      return const IntrinsicHeight(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            SizedBox(
+                              width: AppSizes.sidebarWidth,
+                              child: SidebarWidget(),
+                            ),
+                            Expanded(child: MainColumnWidget()),
+                          ],
                         ),
-                        Container(width: 1, color: theme.outlineVariant),
-                        SizedBox(
-                          width: (AppSizes.mainCardWight - 66) / 3,
-                          child: MyInfoWidget(),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                      );
+                    }
+
+                    return const Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [SidebarWidget(), MainColumnWidget()],
+                    );
+                  },
+                ),
               ),
             ),
           ),
-          SizedBox(height: 100),
-        ],
+        ),
       ),
     );
   }

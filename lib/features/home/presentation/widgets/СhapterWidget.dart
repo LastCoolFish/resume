@@ -1,15 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../styles/themes.dart';
 
+/// Секция основной колонки: заголовок (с иконкой), линия и содержимое.
 class ChapterWidget extends StatelessWidget {
   final String header;
+  final IconData? icon;
   final Widget content;
 
-  final double horizontalPadding;
-
-  const ChapterWidget({super.key, required this.header, required this.content, this.horizontalPadding = 8});
+  const ChapterWidget({
+    super.key,
+    required this.header,
+    required this.content,
+    this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +23,29 @@ class ChapterWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          header,
-          style: AppTextStyles.heading(context).copyWith(letterSpacing: 0.6),
+        Row(
+          spacing: 10,
+          children: [
+            if (icon != null)
+              Container(
+                width: 28,
+                height: 28,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: theme.secondaryContainer,
+                ),
+                child: Icon(icon, size: 16, color: theme.primary),
+              ),
+            Text(
+              header,
+              style: AppTextStyles.heading(context).copyWith(letterSpacing: 0.6),
+            ),
+          ],
         ),
-        SizedBox(height: 6),
+        SizedBox(height: 8),
         Container(height: 1, color: theme.outlineVariant),
-        SizedBox(height: 12),
-        Padding(padding: EdgeInsets.symmetric(horizontal: horizontalPadding), child: content),
+        SizedBox(height: 16),
+        content,
       ],
     );
   }

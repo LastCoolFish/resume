@@ -36,7 +36,7 @@ class StudyInfoWidget extends StatelessWidget {
               ),
               Spacer(),
               Text(
-                format.format(entity.startDate),
+                "${format.format(entity.startDate)} — ${entity.endDate != null ? format.format(entity.endDate!) : 'н. в.'}",
                 style: TextStyle(
                   fontSize: AppSizes.baseTextSize,
                   fontWeight: FontWeight.w600,

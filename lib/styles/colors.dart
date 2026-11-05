@@ -12,6 +12,8 @@ import 'dart:ui';
 /// - outlineVariant           — линии и разделители
 /// - secondaryContainer       — фон тегов навыков
 /// - onSecondaryContainer     — текст тегов навыков
+/// - primaryContainer         — фон сайдбара
+/// - onPrimaryContainer       — текст и иконки в сайдбаре
 class LightColors {
   static const Color surface = Color(0xffeaeef2);
   static const Color surfaceContainer = Color(0xffffffff);
@@ -26,6 +28,9 @@ class LightColors {
 
   static const Color tagBackground = Color(0xffe8edf3);
   static const Color tagText = Color(0xff2c4a6e);
+
+  static const Color sidebar = Color(0xff1a4b8c);
+  static const Color onSidebar = Color(0xffffffff);
 
   static const Color shadow = Color(0x14000000);
 }
@@ -45,6 +50,9 @@ class DarkColors {
 
   static const Color tagBackground = Color(0xff262b34);
   static const Color tagText = Color(0xff8bb8e8);
+
+  static const Color sidebar = Color(0xff16283f);
+  static const Color onSidebar = Color(0xffe4e8ed);
 
   static const Color shadow = Color(0x59000000);
 }
