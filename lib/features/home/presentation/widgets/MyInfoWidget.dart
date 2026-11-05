@@ -21,7 +21,7 @@ class MyInfoWidget extends StatelessWidget {
     (Symbols.place, "г. Москва", null),
     (Symbols.captive_portal, "https://rybalkin.dev", "https://rybalkin.dev"),
     (Symbols.send, "@IT_Fish", "https://t.me/IT_Fish"),
-    (Symbols.mail, "br3027645@gmailo.com", "mailto:br3027645@gmailo.com"),
+    (Symbols.mail, "br3027645@gmail.com", "mailto:br3027645@gmail.com"),
   ];
 
   const MyInfoWidget({super.key});
@@ -93,7 +93,7 @@ class SkillContainer extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(left: 6, right: 8, top: 1, bottom: 2),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primary,
+        color: Theme.of(context).colorScheme.secondaryContainer,
         borderRadius: BorderRadius.all(
           Radius.circular(AppSizes.skillsContainerBorderRadius),
         ),
@@ -102,7 +102,7 @@ class SkillContainer extends StatelessWidget {
         text,
         style: TextStyle(
           fontSize: AppSizes.baseTextSize,
-          color: Theme.of(context).colorScheme.surfaceContainerHigh,
+          color: Theme.of(context).colorScheme.onSecondaryContainer,
         ),
       ),
     );
@@ -132,6 +132,9 @@ class ContactsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final isLink = url != null;
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -139,16 +142,19 @@ class ContactsRow extends StatelessWidget {
           icon,
           size: AppSizes.accentTextSize,
           weight: 700,
-          color: Theme.of(context).colorScheme.outline,
+          color: scheme.primary,
         ),
-        SizedBox(width: 4),
-        GestureDetector(
-          onTap: _launchUrl,
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: AppSizes.accentTextSize,
-              color: Theme.of(context).colorScheme.outline,
+        SizedBox(width: 6),
+        MouseRegion(
+          cursor: isLink ? SystemMouseCursors.click : MouseCursor.defer,
+          child: GestureDetector(
+            onTap: isLink ? _launchUrl : null,
+            child: Text(
+              text,
+              style: TextStyle(
+                fontSize: AppSizes.accentTextSize,
+                color: isLink ? scheme.primary : scheme.outline,
+              ),
             ),
           ),
         ),

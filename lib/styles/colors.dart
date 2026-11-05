@@ -1,45 +1,50 @@
 import 'dart:ui';
 
-class OzonDarkThemeColors {
-  static const Color surface = Color(0xff070707);
-  static const Color surfaceContainer = Color(0xff1d2024);
-  static const Color surfaceContainerHigh = Color(0xff303135);
-
-  static const Color primary = Color(0xff02c1c2);
-  static const Color secondary = Color(0xfff861bc);
-
-  static const Color outline = Color(0xfff5f7fa);
-  static const Color outlineVariant = Color(0xff87898b);
-
-}
-
-class LiteColors{
-  static const Color surface = Color(0xffdceeff);
+/// Палитра светлой темы (ориентир — umerenkov.dev).
+///
+/// Соответствие токенов ColorScheme:
+/// - surface                  — фон страницы
+/// - surfaceContainer         — «лист» резюме
+/// - surfaceContainerLow      — фон сайдбара
+/// - primary                  — акцент (должности, даты, ссылки, точки таймлайна)
+/// - outline                  — основной цвет текста и заголовков
+/// - onSurfaceVariant         — приглушённый текст (компании, подписи)
+/// - outlineVariant           — линии и разделители
+/// - secondaryContainer       — фон тегов навыков
+/// - onSecondaryContainer     — текст тегов навыков
+class LightColors {
+  static const Color surface = Color(0xffeaeef2);
   static const Color surfaceContainer = Color(0xffffffff);
-  static const Color surfaceContainerHigh = Color(0xffeaf4ff);
+  static const Color surfaceContainerLow = Color(0xfff5f7fa);
 
-  static const Color primary = Color(0xff2F6FED);
-  static const Color secondary = Color(0xff7FA6F7);
+  static const Color primary = Color(0xff1a4b8c);
+  static const Color onPrimary = Color(0xffffffff);
 
-  static const Color outline = Color(0xff000000);
-  static const Color outlineVariant = Color(0xff595959);
+  static const Color outline = Color(0xff222222);
+  static const Color onSurfaceVariant = Color(0xff555555);
+  static const Color outlineVariant = Color(0xffd8dde3);
+
+  static const Color tagBackground = Color(0xffe8edf3);
+  static const Color tagText = Color(0xff2c4a6e);
+
+  static const Color shadow = Color(0x14000000);
 }
 
-class LiteGreenColors {
-  static const Color surface = Color(0xffFBF7E9);
-  static const Color surfaceContainer = Color(0xffF6F0D7);
-  static const Color surfaceContainerHigh = Color(0xffC5D89D);
+/// Палитра тёмной темы.
+class DarkColors {
+  static const Color surface = Color(0xff111318);
+  static const Color surfaceContainer = Color(0xff1e2128);
+  static const Color surfaceContainerLow = Color(0xff181b21);
 
-  static const Color primary = Color(0xff708C33);
-  static const Color secondary = Color(0xff97A281);
+  static const Color primary = Color(0xff6ea8e6);
+  static const Color onPrimary = Color(0xff111318);
 
-  static const Color outline = Color(0xff4D6323);
-  static const Color outlineVariant = Color(0xff6A725A);
-}
+  static const Color outline = Color(0xffd0d4da);
+  static const Color onSurfaceVariant = Color(0xff8a909a);
+  static const Color outlineVariant = Color(0xff2e333b);
 
-class DarkGreenColors {
-  static const Color surface = Color(0xff96A78D);
-  static const Color primary = Color(0xffB6CEB4);
-  static const Color secondary = Color(0xffD9E9CF);
-  static const Color outline = Color(0xffF0F0F0);
+  static const Color tagBackground = Color(0xff262b34);
+  static const Color tagText = Color(0xff8bb8e8);
+
+  static const Color shadow = Color(0x59000000);
 }

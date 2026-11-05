@@ -13,7 +13,7 @@ class TimeLineWidget extends StatelessWidget {
     return FixedTimeline.tileBuilder(
       mainAxisSize: MainAxisSize.min,
       theme: TimelineThemeData(
-        color: colorScheme.outlineVariant,
+        color: colorScheme.primary,
         indicatorPosition: 0.00,
         nodePosition: 0,
         // nodeItemOverlap: true,
@@ -29,7 +29,7 @@ class TimeLineWidget extends StatelessWidget {
                 height: 4.0,
                 child:
                     index != 0
-                        ? SolidLineConnector(color: colorScheme.outlineVariant)
+                        ? SolidLineConnector(color: colorScheme.primary)
                         : null,
               ),
 
@@ -38,9 +38,13 @@ class TimeLineWidget extends StatelessWidget {
               // 2. Сам ваш индикатор
               ContainerIndicator(
                 child: Container(
-                  width: 10,
-                  height: 10,
-                  color: colorScheme.outline,
+                  width: 12,
+                  height: 12,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: colorScheme.surfaceContainer,
+                    border: Border.all(color: colorScheme.primary, width: 2),
+                  ),
                 ),
               ),
             ],
@@ -48,7 +52,7 @@ class TimeLineWidget extends StatelessWidget {
         },
         connectorBuilder:
             (context, index, type) =>
-                SolidLineConnector(color: colorScheme.outlineVariant),
+                SolidLineConnector(color: colorScheme.primary),
         contentsBuilder: (context, index) {
           return Column(children: [items[index], SizedBox(height: 20)]);
         },

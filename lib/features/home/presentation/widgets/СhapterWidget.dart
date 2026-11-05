@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../styles/sizes.dart';
+import '../../../../styles/themes.dart';
 
 class ChapterWidget extends StatelessWidget {
   final String header;
@@ -21,27 +21,11 @@ class ChapterWidget extends StatelessWidget {
       children: [
         Text(
           header,
-          style: TextStyle(
-            fontSize: AppSizes.chapterHeaderTextSize,
-            color: theme.outline,
-            fontWeight: FontWeight.bold,
-            // Family
-          ),
+          style: AppTextStyles.heading(context).copyWith(letterSpacing: 0.6),
         ),
-        Row(
-          children: [
-            Expanded(
-              flex: 10,
-              child: Container(height: 2, color: theme.outlineVariant),
-            ),
-            Expanded(
-              flex: 90,
-              child: Container(height: 2, color: theme.surfaceContainerHigh),
-            ),
-          ],
-        ),
-
-        SizedBox(height: 8),
+        SizedBox(height: 6),
+        Container(height: 1, color: theme.outlineVariant),
+        SizedBox(height: 12),
         Padding(padding: EdgeInsets.symmetric(horizontal: horizontalPadding), child: content),
       ],
     );

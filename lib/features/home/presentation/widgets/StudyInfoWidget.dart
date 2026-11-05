@@ -29,8 +29,8 @@ class StudyInfoWidget extends StatelessWidget {
                 //   color: colorScheme.outlineVariant,
                 // ),
                 style: TextStyle(
-                  fontSize: AppSizes.chapterHeaderTextSize,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
                   color: colorScheme.outline,
                 ),
               ),
@@ -38,8 +38,9 @@ class StudyInfoWidget extends StatelessWidget {
               Text(
                 format.format(entity.startDate),
                 style: TextStyle(
-                  fontSize: AppSizes.accentTextSize,
-                  color: colorScheme.outlineVariant,
+                  fontSize: AppSizes.baseTextSize,
+                  fontWeight: FontWeight.w600,
+                  color: colorScheme.primary,
                 ),
               ),
             ],
@@ -49,7 +50,7 @@ class StudyInfoWidget extends StatelessWidget {
             "${entity.specialization} - ${entity.degree}",
             style: TextStyle(
               fontSize: AppSizes.accentTextSize,
-              color: colorScheme.outlineVariant,
+              color: colorScheme.onSurfaceVariant,
             ),
           ),
 

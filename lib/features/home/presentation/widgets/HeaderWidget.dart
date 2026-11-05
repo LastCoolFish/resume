@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import '../../../../styles/sizes.dart';
+import '../../../../styles/themes.dart';
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({super.key});
@@ -22,27 +23,34 @@ class HeaderWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "РЫБАЛКИН БОГДАН\nАЛЕКСАНДРОВИЧ",
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    height: 1,
+                  "Рыбалкин Богдан\nАлександрович",
+                  style: AppTextStyles.heading(
+                    context,
+                    size: AppSizes.nameTextSize,
+                    height: 1.25,
                   ),
                 ),
-
                 Text(
-                  "PYTHON-РАЗРАБОТЧИК",
+                  "Python-разработчик",
                   style: TextStyle(
-                    color: theme.outlineVariant,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    height: 1,
+                    color: theme.primary,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 Row(
+                  spacing: 4,
                   children: [
-                    Icon(Symbols.place, size: 14, weight: 700),
-                    Text("Москва, м. Петровско-Разумовская"),
+                    Icon(
+                      Symbols.place,
+                      size: 16,
+                      weight: 700,
+                      color: theme.onSurfaceVariant,
+                    ),
+                    Text(
+                      "Москва, м. Петровско-Разумовская",
+                      style: TextStyle(color: theme.onSurfaceVariant),
+                    ),
                   ],
                 ),
               ],

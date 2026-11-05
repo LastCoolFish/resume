@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class AppSizes {
   static const double mainCardWight = 800;
-  static const double mainCardBorderRadius = 4;
+  static const double mainCardBorderRadius = 6;
 
   // PADDINGS
   static const double intergroupPadding = 24;
@@ -10,9 +10,10 @@ class AppSizes {
 
   // TEXT
   static const double baseTextSize = 14;
-  static const double accentTextSize = 16;
-  static const double chapterHeaderTextSize = 18;
-  static const double nameTextSize = 22;
+  static const double accentTextSize = 15;
+  static const double chapterHeaderTextSize = 16;
+  static const double nameTextSize = 28;
+  static const double bodyLineHeight = 1.5;
 
   // SKILLS
   static const double skillsContainerBorderRadius = 4;

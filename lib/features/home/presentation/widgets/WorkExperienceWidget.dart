@@ -13,7 +13,7 @@ class WorkExperienceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ColorScheme colorScheme = Theme.of(context).colorScheme;
-    DateFormat format = DateFormat("MMMyyyy", "ru");
+    DateFormat format = DateFormat("LLLL yyyy", "ru");
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 8),
@@ -22,33 +22,31 @@ class WorkExperienceWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            entity.position,
+            "${format.format(entity.startDate)} — ${entity.endDate != null ? format.format(entity.endDate!) : 'настоящее время'}",
             style: TextStyle(
-              fontSize: AppSizes.chapterHeaderTextSize,
-              fontWeight: FontWeight.bold,
-              color: colorScheme.outline,
+              fontSize: AppSizes.baseTextSize,
+              fontWeight: FontWeight.w600,
+              color: colorScheme.primary,
             ),
           ),
-
-          SizedBox(height: 4),
-          Row(
-            children: [
-              Text(
-                entity.company.name,
-                style: TextStyle(
-                  fontSize: AppSizes.accentTextSize,
-                  color: colorScheme.outlineVariant,
+          SizedBox(height: 2),
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: entity.position,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    color: colorScheme.outline,
+                  ),
                 ),
-              ),
-              Spacer(),
-              Text(
-                "${format.format(entity.startDate)} - ${entity.endDate != null ? format.format(entity.endDate!) : 'По настоящее время'}",
-                style: TextStyle(
-                  fontSize: AppSizes.accentTextSize,
-                  color: colorScheme.outlineVariant,
+                TextSpan(
+                  text: " — ${entity.company.name}",
+                  style: TextStyle(color: colorScheme.onSurfaceVariant),
                 ),
-              ),
-            ],
+              ],
+            ),
+            style: TextStyle(fontSize: 16),
           ),
           SizedBox(height: 8),
           MarkdownBody(
@@ -57,12 +55,10 @@ class WorkExperienceWidget extends StatelessWidget {
               Theme.of(context),
             ).copyWith(
               p: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                height: 1, // Увеличивает межстрочный интервал
                 fontSize: AppSizes.accentTextSize,
               ),
-              // Если нужно изменить интервал в списках
               listBullet: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                height: 0.5,
+                color: colorScheme.primary,
                 fontSize: AppSizes.accentTextSize,
               ),
             ),

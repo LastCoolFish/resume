@@ -5,7 +5,8 @@ import 'package:resume/styles/themes.dart';
 import 'features/home/presentation/pages/HomePage.dart';
 
 void main() async {
-  initializeDateFormatting('fr_FR', null);
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('ru', null);
 
   runApp(const MyApp());
 }
@@ -20,6 +21,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Resume',
       theme: AppTheme.liteTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.system,
       home: Scaffold(body: MyHomePage(title: 'Resume Home Page')),
     );
   }
