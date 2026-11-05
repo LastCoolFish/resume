@@ -1,0 +1,45 @@
+name: 'Рыбалкин Богдан Александрович'
+job: 'Python-разработчик'
+place: 'Москва, м. Петровско-Разумовская'
+experience:
+  - post: 'Flutter-разработчик'
+    place: 'ООО Классрум'
+    start_date: '09.2025'
+    end_date: '06.2026'
+    description: 'Занимался разработкой мобильного приложения\n
+                  - Занимался разработкой мобильного приложения\n
+                  - Занимался разработкой мобильного приложения'
+
+  - post: ''
+    place: ''
+    start_date: ''
+    end_date: ''
+    description: ''
+
+contacts:
+  - icon: 'place'
+    text: 'г.Москва'
+    url: ''
+
+
+education:
+  - university: ''
+    year: ''
+    direction: ''
+    degree: ''
+
+  - university: ''
+    year: ''
+    direction: ''
+    degree: ''
+
+
+skills:
+  - skill: 'Python'
+    subskills:
+      - 'PyQt5'
+      - ''
+
+  - skill: ''
+
+

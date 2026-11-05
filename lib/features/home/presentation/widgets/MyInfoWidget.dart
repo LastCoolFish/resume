@@ -21,6 +21,7 @@ class MyInfoWidget extends StatelessWidget {
     (Symbols.place, "г. Москва", null),
     (Symbols.captive_portal, "https://rybalkin.dev", "https://rybalkin.dev"),
     (Symbols.send, "@IT_Fish", "https://t.me/IT_Fish"),
+    (Symbols.mail, "br3027645@gmailo.com", "mailto:br3027645@gmailo.com"),
   ];
 
   const MyInfoWidget({super.key});
@@ -38,6 +39,7 @@ class MyInfoWidget extends StatelessWidget {
             horizontalPadding: 4,
             header: "КОНТАКТЫ",
             content: Column(
+              spacing: 4,
               children:
                   contacts
                       .map(
@@ -145,7 +147,7 @@ class ContactsRow extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-              fontSize: AppSizes.baseTextSize,
+              fontSize: AppSizes.accentTextSize,
               color: Theme.of(context).colorScheme.outline,
             ),
           ),

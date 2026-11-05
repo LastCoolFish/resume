@@ -46,7 +46,7 @@ class StudyInfoWidget extends StatelessWidget {
           ),
           SizedBox(height: 4),
           Text(
-            entity.specialization + entity.degree,
+            "${entity.specialization} - ${entity.degree}",
             style: TextStyle(
               fontSize: AppSizes.accentTextSize,
               color: colorScheme.outlineVariant,
