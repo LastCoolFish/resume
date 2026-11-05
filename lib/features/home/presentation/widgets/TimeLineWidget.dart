@@ -17,7 +17,9 @@ class TimeLineWidget extends StatelessWidget {
   static const double _railWidth = 28;
   static const double _dotSize = 12;
   static const double _itemGap = 24;
-  static const double _narrowBreakpoint = 480;
+
+  /// Ширина экрана, ниже которой даты переносятся над записью.
+  static const double _narrowScreenWidth = 560;
 
   const TimeLineWidget({super.key, required this.items});
 
@@ -25,19 +27,17 @@ class TimeLineWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final wide = constraints.maxWidth >= _narrowBreakpoint;
+    // Не LayoutBuilder: таймлайн лежит внутри IntrinsicHeight (HomePage),
+    // а LayoutBuilder не поддерживает intrinsic-размеры (в debug — assert).
+    final wide = MediaQuery.sizeOf(context).width >= _narrowScreenWidth;
 
-        return Column(
-          children: [
-            for (var i = 0; i < items.length; i++)
-              wide
-                  ? _wideRow(scheme, items[i], isLast: i == items.length - 1)
-                  : _narrowRow(scheme, items[i], isLast: i == items.length - 1),
-          ],
-        );
-      },
+    return Column(
+      children: [
+        for (var i = 0; i < items.length; i++)
+          wide
+              ? _wideRow(scheme, items[i], isLast: i == items.length - 1)
+              : _narrowRow(scheme, items[i], isLast: i == items.length - 1),
+      ],
     );
   }
 
